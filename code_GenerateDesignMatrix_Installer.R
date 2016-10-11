@@ -5,12 +5,6 @@ rm(list=ls())
 design_InstallerConjoint <- read.csv("design_InstallerConjoint.csv",stringsAsFactors=FALSE)
 
 # reorganize conjoint design table
-insertRow <- function(existingDF, newrow, r) {
-  existingDF[seq(r+1,nrow(existingDF)+1),] <- existingDF[seq(r,nrow(existingDF)),]
-  existingDF[r,] <- newrow
-  existingDF
-}
-
 design_Random <- design_InstallerConjoint[4:13503,]
 
 designM <- data.frame(Version = numeric(),

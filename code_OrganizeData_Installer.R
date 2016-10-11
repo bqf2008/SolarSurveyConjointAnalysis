@@ -57,6 +57,7 @@ for (i in 1:n_Response) {
 }
 
 # construct attribute table
+choiceM[,"Con"] <- (1 - (choiceM$Concept == 4))
 levels_Att = c(3,3,3,4,3,5)
 for (i in 1:6) {
   l = levels_Att[i]
@@ -66,6 +67,7 @@ for (i in 1:6) {
     choiceM[,name_ColumnAtt] <- 1 * (choiceM[att_Column] == j)
   }
 }
+
 
 write.table(choiceM,"choiceM_Installer.csv", sep=",",row.names = FALSE)
 
