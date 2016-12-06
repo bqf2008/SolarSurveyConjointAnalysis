@@ -2,7 +2,7 @@
 rm(list=ls())
 
 # read in choice data and conjoint design
-data_SystemConjoint <- read.csv("data_SystemConjoint.csv",stringsAsFactors=FALSE)
+data_SystemConjoint <- read.csv("SUSystemConjoint_data.csv",stringsAsFactors=FALSE)
 designM <- read.csv("designM_System.csv",stringsAsFactors=FALSE)
 
 #### construct conjoint table for modeling
@@ -58,7 +58,7 @@ for (i in 1:n_Response) {
 
 # construct attribute table
 choiceM[,"None"] <- 1*(choiceM$Concept == 4)
-levels_Att = c(3,2,3,4,3,5)
+levels_Att = c(5,2,3,4,3,5)
 for (i in 1:6) {
   l = levels_Att[i]
   for (j in 1:(l-1)) {
@@ -67,6 +67,11 @@ for (i in 1:6) {
     choiceM[,name_ColumnAtt] <- 1 * (choiceM[att_Column] == j) - 1 * (choiceM[att_Column] == l)
   }
 }
+
+choiceM[,"Att1c"] <- 20.5*(choiceM$Att1 == 0) + 15.5*(choiceM$Att1 == 1) + 18*(choiceM$Att1 == 2) + 20.5*(choiceM$Att1 == 3) + 23*(choiceM$Att1 == 4) + 25.5*(choiceM$Att1 == 5)
+choiceM[,"Att4c"] <- 1.5*(choiceM$Att4 == 0) + 0*(choiceM$Att4 == 1) + 1*(choiceM$Att4 == 2) + 2*(choiceM$Att4 == 3) + 3*(choiceM$Att4 == 4)
+choiceM[,"Att5c"] <- 6*(choiceM$Att5 == 0) + 3*(choiceM$Att5 == 1) + 6*(choiceM$Att5 == 2) + 9*(choiceM$Att5 == 3)
+choiceM[,"Att6c"] <- 40*(choiceM$Att6 == 0) + 10*(choiceM$Att6 == 1) + 25*(choiceM$Att6 == 2) + 40*(choiceM$Att6 == 3) + 55*(choiceM$Att6 == 4) + 70*(choiceM$Att6 == 5)
 
 
 write.table(choiceM,"choiceM_System.csv", sep=",",row.names = FALSE)

@@ -11,7 +11,7 @@ library(mlogit)
 conjointM <- mlogit.data(choiceM, choice= "Choice", shape = "long", id.var = "pid", alt.var = "Concept")
 
 # Multinomial Logit Model with mlogit package
-conjointM.logit <- mlogit(Choice ~ None + Att1_1 + Att1_2
+conjointM.logit <- mlogit(Choice ~ None + Att1_1 + Att1_2 + Att1_3 + Att1_4
                           + Att2_1  
                           + Att3_1 + Att3_2 
                           + Att4_1 + Att4_2 + Att4_3 
@@ -19,6 +19,20 @@ conjointM.logit <- mlogit(Choice ~ None + Att1_1 + Att1_2
                           + Att6_1 + Att6_2 + Att6_3 + Att6_4 | 0 ,
                           data = conjointM)
 summary(conjointM.logit)
+
+
+# Multinomial Logit Model with mlogit package, with some continuous variables
+conjointMc.logit <- mlogit(Choice ~ None + Att1c
+                           + Att2_1   
+                           + Att3_1 + Att3_2 
+                           + Att4c
+                           + Att5c
+                           + Att6c | 0 ,
+                           data = conjointM)
+summary(conjointMc.logit)
+
+
+
 
 # Mixed Logit Model with mlogit package
 conjointM1.mixl <- mlogit(Choice ~ None + Att1_1 + Att1_2
