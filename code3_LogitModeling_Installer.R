@@ -8,8 +8,7 @@ choiceM <- read.csv("choiceM_Installer.csv",stringsAsFactors=FALSE)
 library(mlogit)
 conjointM <- mlogit.data(choiceM, choice= "Choice", shape = "long", id.var = "pid", alt.var = "Concept")
 
-# Mixed Logit Model
-library(gmnl)
+
 # Multinomial Logit Model with mlogit package
 conjointM.logit <- mlogit(Choice ~ None + Att1_1 + Att1_2
                           + Att2_1 + Att2_2  
@@ -19,6 +18,21 @@ conjointM.logit <- mlogit(Choice ~ None + Att1_1 + Att1_2
                           + Att6_1 + Att6_2 + Att6_3 + Att6_4 | 0 ,
                           data = conjointM)
 summary(conjointM.logit)
+
+
+# Multinomial Logit Model with mlogit package, with some continuous variables
+conjointMc.logit <- mlogit(Choice ~ None + Att1_1 + Att1_2
+                          + Att2_1 + Att2_2  
+                          + Att3_1 + Att3_2 
+                          + Att4c
+                          + Att5c
+                          + Att6c | 0 ,
+                          data = conjointM)
+summary(conjointMc.logit)
+
+
+
+
 
 # Mixed Logit Model with mlogit package
 conjointM1.mixl <- mlogit(Choice ~ None + Att1_1 + Att1_2
@@ -39,6 +53,8 @@ conjointM1.mixl <- mlogit(Choice ~ None + Att1_1 + Att1_2
                           panel = TRUE,
                           correlation = FALSE)
 
+# Mixed Logit Model with gmnl package
+library(gmnl)
 
 conjointM2.mixl <- gmnl(Choice ~ None + Att1_1 + Att1_2
                         + Att2_1 + Att2_2 
