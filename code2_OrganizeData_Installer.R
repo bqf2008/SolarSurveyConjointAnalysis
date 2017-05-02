@@ -68,7 +68,7 @@ for (i in 1:6) {
   }
 }
 
-choiceM[,"Att4c"] <- 2.25*(choiceM$Att4 == 0) + 0.5*(choiceM$Att4 == 1) + 1*(choiceM$Att4 == 2) + 2*(choiceM$Att4 == 3) + 4*(choiceM$Att4 == 4)
+choiceM[,"Att4c"] <- 2^0.5*(choiceM$Att4 == 0) + 0.5*(choiceM$Att4 == 1) + 1*(choiceM$Att4 == 2) + 2*(choiceM$Att4 == 3) + 4*(choiceM$Att4 == 4)
 choiceM[,"Att5c"] <- 15*(choiceM$Att5 == 0) + 5*(choiceM$Att5 == 1) + 15*(choiceM$Att5 == 2) + 25*(choiceM$Att5 == 3)
 choiceM[,"Att6c"] <- 40*(choiceM$Att6 == 0) + 10*(choiceM$Att6 == 1) + 25*(choiceM$Att6 == 2) + 40*(choiceM$Att6 == 3) + 55*(choiceM$Att6 == 4) + 70*(choiceM$Att6 == 5)
 
