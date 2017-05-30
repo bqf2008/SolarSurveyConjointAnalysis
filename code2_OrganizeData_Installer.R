@@ -2,13 +2,13 @@
 rm(list=ls())
 
 # read in choice data and conjoint design
-data_InstallerConjoint <- read.csv("SUInstallerConjoint_data.csv",stringsAsFactors=FALSE)
+data_InstallerConjoint <- read.csv("SUInstallerConjoint_data_valid_1&2_MA.csv",stringsAsFactors=FALSE)
 designM <- read.csv("designM_Installer.csv",stringsAsFactors=FALSE)
 
 #### construct conjoint table for modeling
 
 # construct choice table
-choice <- c("sys_RespNum","pid",
+choice <- c("sys_CBCVersion_InstallerCBC","pid",
   "InstallerCBC_Random1","InstallerCBC_Random2",
   "InstallerCBC_Random3","InstallerCBC_Random4",
   "InstallerCBC_Random5","InstallerCBC_Random6",
@@ -50,7 +50,7 @@ choiceM <- data.frame(pid = character(),
 n_Response = nrow(choice_InstallerConjoint)
 for (i in 1:n_Response) {
   choiceM[((i-1)*64+1):((i-1)*64+64),1] <- choice_InstallerConjoint$pid[i]
-  v <- choice_InstallerConjoint$sys_RespNum[i] #conjoint version
+  v <- choice_InstallerConjoint$sys_CBCVersion_InstallerCBC[i] #conjoint version
   choiceM[((i-1)*64+1):((i-1)*64+60),2:10] <- designM[((v-1)*60+1):((v-1)*60+60),]
   choiceM[((i-1)*64+61):((i-1)*64+64),2:10] <- designM[18001:18004,]
   choiceM[((i-1)*64+1):((i-1)*64+64),11] <- t(choice_InstallerConjoint[i,19:82])

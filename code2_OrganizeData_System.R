@@ -2,13 +2,13 @@
 rm(list=ls())
 
 # read in choice data and conjoint design
-data_SystemConjoint <- read.csv("SUSystemConjoint_data.csv",stringsAsFactors=FALSE)
+data_SystemConjoint <- read.csv("SUSystemConjoint_data_valid_1&2_MA.csv",stringsAsFactors=FALSE)
 designM <- read.csv("designM_System.csv",stringsAsFactors=FALSE)
 
 #### construct conjoint table for modeling
 
 # construct choice table
-choice <- c("sys_RespNum","pid",
+choice <- c("sys_CBCVersion_System","pid",
             "System_Random1","System_Random2",
             "System_Random3","System_Random4",
             "System_Random5","System_Random6",
@@ -50,7 +50,7 @@ choiceM <- data.frame(pid = character(),
 n_Response = nrow(choice_SystemConjoint)
 for (i in 1:n_Response) {
   choiceM[((i-1)*64+1):((i-1)*64+64),1] <- choice_SystemConjoint$pid[i]
-  v <- choice_SystemConjoint$sys_RespNum[i] #conjoint version
+  v <- choice_SystemConjoint$sys_CBCVersion_System[i] #conjoint version
   choiceM[((i-1)*64+1):((i-1)*64+60),2:10] <- designM[((v-1)*60+1):((v-1)*60+60),]
   choiceM[((i-1)*64+61):((i-1)*64+64),2:10] <- designM[18001:18004,]
   choiceM[((i-1)*64+1):((i-1)*64+64),11] <- t(choice_SystemConjoint[i,19:82])
