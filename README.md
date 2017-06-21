@@ -11,10 +11,13 @@ The choice results are in:
   data_InstallerConjoint.csv
   data_SystemConjoint.csv
 
-There are three code files for each of the conjoint survey (X could be Installer or System):
+There are three sets of code files for each of the conjoint survey (X could be Installer or System):
   code1_GenerateDesignMatrix_X.R
   code2_OrganizeData_X.R
-  code3_LogitModeling_X.R
+  code2_OrganizeData_Training_X.R
+  code3_ModelEstimation_mlogit_X.R
+  code3_ModelEstimation_MIXL_X.R
+  code3_ModelEstimation_HB_X.R
 
 code1 extract data from the "design_X.csv" and save to designM_X.csv with desired format
 code2 extract data from the choice files "XConjoint_data.csv"
