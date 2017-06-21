@@ -2,8 +2,11 @@
 rm(list=ls())
 
 # read in choice data and conjoint design
-data_SystemConjoint <- read.csv("SUSystemConjoint_data_valid_1&2_MA.csv",stringsAsFactors=FALSE)
+data_SystemConjoint <- read.csv("SUSystemConjoint_data_valid.csv",stringsAsFactors=FALSE)
 designM <- read.csv("designM_System.csv",stringsAsFactors=FALSE)
+
+# sort choice data by pid (ID)
+data_SystemConjoint <- data_SystemConjoint[order(data_SystemConjoint$pid),]
 
 #### construct conjoint table for modeling
 
@@ -69,7 +72,8 @@ for (i in 1:6) {
 }
 
 choiceM[,"Att1c"] <- 20.5*(choiceM$Att1 == 0) + 15.5*(choiceM$Att1 == 1) + 18*(choiceM$Att1 == 2) + 20.5*(choiceM$Att1 == 3) + 23*(choiceM$Att1 == 4) + 25.5*(choiceM$Att1 == 5)
-choiceM[,"Att4c"] <- 1.5*(choiceM$Att4 == 0) + 0*(choiceM$Att4 == 1) + 1*(choiceM$Att4 == 2) + 2*(choiceM$Att4 == 3) + 3*(choiceM$Att4 == 4)
+# flip the sign of Att4c [lognormal distribution]
+choiceM[,"Att4c"] <- - 1.5*(choiceM$Att4 == 0) - 0*(choiceM$Att4 == 1) - 1*(choiceM$Att4 == 2) - 2*(choiceM$Att4 == 3) - 3*(choiceM$Att4 == 4)
 choiceM[,"Att5c"] <- 6*(choiceM$Att5 == 0) + 3*(choiceM$Att5 == 1) + 6*(choiceM$Att5 == 2) + 9*(choiceM$Att5 == 3)
 choiceM[,"Att6c"] <- 40*(choiceM$Att6 == 0) + 10*(choiceM$Att6 == 1) + 25*(choiceM$Att6 == 2) + 40*(choiceM$Att6 == 3) + 55*(choiceM$Att6 == 4) + 70*(choiceM$Att6 == 5)
 
