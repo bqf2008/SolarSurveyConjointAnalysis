@@ -15,11 +15,12 @@ The choice results are in:
 There are four sets of code files for each of the conjoint survey (X could be Installer or System): 
 	code1_GenerateDesignMatrix_X.R
 	code2_OrganizeData_X.R
-	code2_OrganizeData_Training_X.R
+	code2_OrganizeData_Train_X.R
 	code3_ModelEstimation_mlogit_X.R
 	code3_ModelEstimation_MIXL_X.R
 	code3_ModelEstimation_HB_X.R
-	code4_
+	code4_ModelValidation_MIXL_X.R
+	code4_ModelValidatin_HB_X.R
 
 code1 extract data from the "design_X.csv" and save to designM_X.csv with desired format.
 
@@ -32,4 +33,9 @@ code3 build the logit models.
 
 Run corrosponding four codes in sequence to get the modeling results.
 
-Eg. "code1.R", "code2"
+Examples:
+
+I. "code1.R" -> "code2_OrganizeData_Train_X.R" -> "code3_ModelEstimation_MIXL_X.R" -> "code4_ModelValidation_MIXL_X.R"
+
+II. "code1.R" -> "code2.OrganizeData_Train_X.R" -> "code3.ModelEstimation_HB_X.R"
+
