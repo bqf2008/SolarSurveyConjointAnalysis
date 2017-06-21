@@ -12,8 +12,8 @@ The choice results are in:
 	data_SystemConjoint.csv
 
 There are four sets of code files for each of the conjoint survey (X could be Installer or System): 
-\n	code1_GenerateDesignMatrix_X.R
-\n	code2_OrganizeData_X.R
+	code1_GenerateDesignMatrix_X.R
+	code2_OrganizeData_X.R
 	code2_OrganizeData_Training_X.R
 	code3_ModelEstimation_mlogit_X.R
 	code3_ModelEstimation_MIXL_X.R
