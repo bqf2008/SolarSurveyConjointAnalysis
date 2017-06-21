@@ -4,8 +4,11 @@
 rm(list=ls())
 
 # read in choice data and conjoint design
-data_SystemConjoint <- read.csv("SUSystemConjoint_data_Valid.csv",stringsAsFactors=FALSE)
+data_SystemConjoint <- read.csv("SUSystemConjoint_data_valid.csv",stringsAsFactors=FALSE)
 designM <- read.csv("designM_System.csv",stringsAsFactors=FALSE)
+
+# sort choice data by pid (ID)
+data_SystemConjoint <- data_SystemConjoint[order(data_SystemConjoint$pid),]
 
 #### construct conjoint table for modeling
 
