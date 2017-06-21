@@ -1,6 +1,7 @@
 # SolarSurveyConjointAnalysis
 R codes for discrete choice modeling of a solar adoption survey
 
+
 This repository contains the codes and data you need to create preference models for solar installers and solar systems.
 
 The design of the conjoint surveys are originally stored in:
